@@ -1,1 +1,43 @@
-<p>activos works!</p>
+<table  class="table  mt-5 col-10">
+  <thead>
+    <th>#</th>
+    <th>descripcion</th>
+    <th>departamentoId</th>
+    <th>tipoActivoId</th>
+    <th>fechaRegistro</th>
+    <th>valorCompra</th>
+    <th>depreciacionAcumulada</th>
+    <th>Actions</th>
+
+  </thead>
+  <tbody class="table-group-divider">
+    <tr class="table-active" *ngFor="let activo of activos">
+      <td>
+        {{activo.activoFijoId}}
+      </td>
+      <td>
+        {{activo.descripcion}}
+      </td>
+      <td>
+        {{activo.departamentoId}}
+      </td>
+      <td>
+        {{activo.tipoActivoId}}
+      </td>
+      <td>
+        {{activo.fechaRegistro}}
+      </td>
+      <td>
+        {{activo.valorCompra}}
+      </td>
+      <td>
+        {{activo.depreciacionAcumulada}}
+      </td>
+      <td>
+        <a routerLink="['']"></a>
+        <a routerLink="['']"></a>
+        <a routerLink="['']"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

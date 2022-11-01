@@ -1,6 +1,6 @@
 export class ActivosFijo{
   constructor(
-    public _id:number,
+    public activoFijoId:number,
     public descripcion: string,
     public departamentoId: number,
     public tipoActivoId:number,

@@ -1,3 +1,3 @@
-export const golbal = {
-  url:'http://activofijo.somee.com/api/'
+export const global = {
+  url:'http://activofijo.somee.com/api'
 }
