@@ -32,6 +32,7 @@ export class ViewEmpleadosComponent implements OnInit {
         if (res.dataList
         ) {
           this.empleados = res.dataList
+          console.log(res.dataList)
         }
       },
       err => {
