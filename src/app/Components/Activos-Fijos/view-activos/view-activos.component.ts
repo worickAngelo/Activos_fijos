@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ActivosFijosService } from '../Services/activos-fijos.service';
-import { ActivosFijo } from '../model/ActivoFijo';
-import { global } from '../Services/Global';
+import { ActivosFijosService } from '../../../Services/activos-fijos.service';
+import { ActivosFijo } from '../../../model/ActivoFijo';
+import { global } from '../../../Services/Global';
 @Component({
   selector: 'app-activos',
-  templateUrl: './activos.component.html',
-  styleUrls: ['./activos.component.css'],
+  templateUrl: './view-activos.component.html',
+  styleUrls: ['./view-activos.component.css'],
   providers: [ActivosFijosService]
 })
 export class ActivosComponent implements OnInit {

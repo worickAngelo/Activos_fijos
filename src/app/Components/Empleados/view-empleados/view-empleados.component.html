@@ -1,0 +1,42 @@
+<table  class="table  mt-5 col-10">
+    <thead>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Cedula</th>
+      <th>Departamento</th>
+      <th>Tipo de persona</th>
+      <th>Fecha ingreso</th>
+      <th>Estado</th>
+  
+    </thead>
+    <tbody class="table-group-divider">
+      <tr class="table-active" *ngFor="let empleado of empleados">
+        <td>
+          {{empleado._id}}
+        </td>
+        <td>
+          {{empleado.nombre}}
+        </td>
+        <td>
+          {{empleado.cedula}}
+        </td>
+        <td>
+          {{empleado.departamentoId}}
+        </td>
+        <td>
+          {{empleado.tipoPersonaId}}
+        </td>
+        <td>
+          {{empleado.fechaIngreso}}
+        </td>
+        <td>
+          {{empleado.estado}}
+        </td>
+        <td>
+          <a routerLink="['']"></a>
+          <a routerLink="['']"></a>
+          <a routerLink="['']"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>

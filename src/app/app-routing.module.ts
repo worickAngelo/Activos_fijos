@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //importar la ruta de  los componentes
-import { ActivosComponent } from './activos/activos.component';
-import { AddActivosComponent } from './add-activos/add-activos.component';
+import { ActivosComponent } from './Components/Activos-Fijos/view-activos/view-activos.component';
+import { AddActivosComponent } from './Components/Activos-Fijos/add-activos/add-activos.component';
 
 const routes: Routes = [
   {path: 'activos', component: ActivosComponent},

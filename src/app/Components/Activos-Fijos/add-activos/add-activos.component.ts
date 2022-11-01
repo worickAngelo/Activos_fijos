@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Departamento } from '../model/Departamentos';
+import { Departamento } from '../../../model/Departamentos';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DepartamentoService } from '../Services/departamento.service';
-import { ActivosFijosService } from '../Services/activos-fijos.service';
-import { ActivosFijo } from '../model/ActivoFijo';
-import { TipoActivoService } from '../Services/tipo-activo.service';
-import { TipoActivo } from '../model/TipoActivos';
+import { DepartamentoService } from '../../../Services/departamento.service';
+import { ActivosFijosService } from '../../../Services/activos-fijos.service';
+import { ActivosFijo } from '../../../model/ActivoFijo';
+import { TipoActivoService } from '../../../Services/tipo-activo.service';
+import { TipoActivo } from '../../../model/TipoActivos';
 
 @Component({
   selector: 'app-add-activos',
@@ -50,7 +50,7 @@ export class AddActivosComponent implements OnInit {
     )
   }
   getTipo(){
-    this._TipoService.getDepartamentos().subscribe(
+    this._TipoService.getTipoActivos().subscribe(
       res => {
         if (res.dataList
         ) {
