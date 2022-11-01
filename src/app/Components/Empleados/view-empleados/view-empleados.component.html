@@ -1,3 +1,6 @@
+
+<a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['']" href="#">Crear nuevo</a>
+
 <table  class="table  mt-5 col-10">
     <thead>
       <th>#</th>
@@ -7,6 +10,7 @@
       <th>Tipo de persona</th>
       <th>Fecha ingreso</th>
       <th>Estado</th>
+      <th>Acciones</th>
   
     </thead>
     <tbody class="table-group-divider">
@@ -33,9 +37,11 @@
           {{empleado.estado}}
         </td>
         <td>
-          <a routerLink="['']"></a>
-          <a routerLink="['']"></a>
-          <a routerLink="['']"></a>
+          <a routerLink="['']">Ver </a>
+
+          <a routerLink="['']">Editar </a>
+          
+          <a routerLink="['']">Eliminar </a>
         </td>
       </tr>
     </tbody>
