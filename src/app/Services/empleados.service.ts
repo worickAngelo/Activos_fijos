@@ -6,36 +6,36 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TipoActivoService {
+export class EmpleadosService {
+
   public url: string;
   constructor(private _http: HttpClient) {
     this.url = global.url;
   }
 
-
-  getTipoActivos(): Observable<any> {
+  getEmpleados(): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.get(this.url + '/TipoActivos',{ headers: headers });
+    return this._http.get(this.url + '/Empleados',{ headers: headers });
   }
 
-  addTipoActivos(TipoActivo: any): Observable<any> {
-    let params = JSON.stringify(TipoActivo);
+  addEmpleados(Empleado: any): Observable<any> {
+    let params = JSON.stringify(Empleado);
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.post(this.url + '/TipoActivos', params, { headers: headers });
+    return this._http.post(this.url + '/Empleados', params, { headers: headers });
   }
 
-  editTipoActivos(TipoActivo: any): Observable<any> {
-    let params = JSON.stringify(TipoActivo);
+  editEmpleados(Empleado: any): Observable<any> {
+    let params = JSON.stringify(Empleado);
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.put(this.url + '/TipoActivos', params, { headers: headers });
+    return this._http.put(this.url + '/Empleados', params, { headers: headers });
   }
 
-  deleteTipoActivos(TipoActivoId: number): Observable<any> {
+  deleteEmpleados(EmpleadoId: number): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.delete(this.url + '/TipoActivos/'+TipoActivoId, {headers: headers});
+    return this._http.delete(this.url + '/Empleados/'+EmpleadoId, {headers: headers});
   }
 }

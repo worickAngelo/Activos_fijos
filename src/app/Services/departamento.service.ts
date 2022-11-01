@@ -19,4 +19,24 @@ export class DepartamentoService {
     return this._http.get(this.url + '/Departamentos',{ headers: headers });
   }
 
+  addDepartamentos(departamento: any): Observable<any> {
+    let params = JSON.stringify(departamento);
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+    return this._http.post(this.url + '/Departamentos', params, { headers: headers });
+  }
+
+  editDepartamentos(departamento: any): Observable<any> {
+    let params = JSON.stringify(departamento);
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+    return this._http.put(this.url + '/Departamentos', params, { headers: headers });
+  }
+
+  deleteDepartamentos(departamentoId: number): Observable<any> {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+    return this._http.delete(this.url + '/Departamentos/'+departamentoId, {headers: headers});
+  }
+
 }
