@@ -28,7 +28,7 @@ export class AddActivosComponent implements OnInit {
     private _TipoService: TipoActivoService,
   ) {
     this.departamento = [];
-    this.activo = new ActivosFijo(0,'',1,1,this.date,0,0);
+    this.activo = new ActivosFijo(0,'',0,0,this.date,0,0);
     this.tipo = [];
 
   }
@@ -68,16 +68,17 @@ export class AddActivosComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    this._activosService.addActivos(this.activo).subscribe(
+    console.log(form.value)
+
+    this._activosService.addActivos(form.value).subscribe(
       response => {
 
-        if (this.activo) {
+        if (form) {
           this.status = 'success'
           this.activo = response.dataList;
           this._router.navigate(['/activos']);
           form.reset();
 
-          console.log(this.activo)
         } else {
           this.status = "error";
           console.log(this.status)

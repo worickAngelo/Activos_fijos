@@ -1,6 +1,6 @@
 export class TipoActivo{
   constructor(
-    public _id: string,
+    public tipoActivoId: number,
     public descripcion: string,
     public cuentaContableCompra: number,
     public cuentaContableDepreciacion:number,
