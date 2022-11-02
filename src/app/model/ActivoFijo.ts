@@ -4,7 +4,7 @@ export class ActivosFijo{
     public descripcion: string,
     public departamentoId: number,
     public tipoActivoId:number,
-    public fechaRegistro:string,
+    public fechaRegistro:Date,
     public valorCompra: number,
     public depreciacionAcumulada: number
 

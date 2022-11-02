@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵNgOnChangesFeature } from '@angular/core';
 import { Departamento } from '../../../model/Departamentos';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepartamentoService } from '../../../Services/departamento.service';
@@ -6,19 +6,20 @@ import { ActivosFijosService } from '../../../Services/activos-fijos.service';
 import { ActivosFijo } from '../../../model/ActivoFijo';
 import { TipoActivoService } from '../../../Services/tipo-activo.service';
 import { TipoActivo } from '../../../model/TipoActivos';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-add-activos',
   templateUrl: './add-activos.component.html',
   styleUrls: ['./add-activos.component.css'],
-  providers:[DepartamentoService,ActivosFijosService]
+  providers: [DepartamentoService, ActivosFijosService]
 })
 export class AddActivosComponent implements OnInit {
   public url: any;
   public status: any;
-  public activos: Array<ActivosFijo>
+  public activo: ActivosFijo;
   public tipo: Array<TipoActivo>
   public departamento: Array<Departamento>;
+  public date = new Date();
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
@@ -27,16 +28,19 @@ export class AddActivosComponent implements OnInit {
     private _TipoService: TipoActivoService,
   ) {
     this.departamento = [];
-    this.activos = [];
+    this.activo = new ActivosFijo(0,'',1,1,this.date,0,0);
     this.tipo = [];
-   }
+
+  }
 
   ngOnInit(): void {
     this.getDepartamento();
     this.getTipo();
   }
 
-  getDepartamento(){
+
+
+  getDepartamento() {
     this._departamentosService.getDepartamentos().subscribe(
       res => {
         if (res.dataList
@@ -49,7 +53,7 @@ export class AddActivosComponent implements OnInit {
       }
     )
   }
-  getTipo(){
+  getTipo() {
     this._TipoService.getTipoActivos().subscribe(
       res => {
         if (res.dataList
@@ -63,28 +67,30 @@ export class AddActivosComponent implements OnInit {
     )
   }
 
-  onSubmit(form:any){
-    this._activosService.addActivos(this.activos).subscribe(
-      response =>{
+  onSubmit(form: any) {
+    this._activosService.addActivos(this.activo).subscribe(
+      response => {
 
-        if(this.activos){
+        if (this.activo) {
           this.status = 'success'
-          this.activos = response.dataList;
-          this._router.navigate(['/inicio']);
+          this.activo = response.dataList;
+          this._router.navigate(['/activos']);
+          form.reset();
 
-          console.log(this.activos)
-        }else{
+          console.log(this.activo)
+        } else {
           this.status = "error";
           console.log(this.status)
         }
 
       },
-      error =>{
+      error => {
         this.status = 'error'
         console.log(error)
       }
 
     );
   }
+
 
 }

@@ -7,6 +7,7 @@ import { ActivosComponent } from './Components/Activos-Fijos/view-activos/view-a
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddActivosComponent } from './Components/Activos-Fijos/add-activos/add-activos.component';
 import { ViewEmpleadosComponent } from './Components/Empleados/view-empleados/view-empleados.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ViewEmpleadosComponent } from './Components/Empleados/view-empleados/vi
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
