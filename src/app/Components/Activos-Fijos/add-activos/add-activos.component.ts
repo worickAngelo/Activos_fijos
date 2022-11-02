@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵɵNgOnChangesFeature } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ɵɵNgOnChangesFeature } from '@angular/core';
 import { Departamento } from '../../../model/Departamentos';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepartamentoService } from '../../../Services/departamento.service';
@@ -20,6 +20,8 @@ export class AddActivosComponent implements OnInit {
   public tipo: Array<TipoActivo>
   public departamento: Array<Departamento>;
   public date = new Date();
+  @Output() onSave : EventEmitter<any> = new EventEmitter<any>();
+
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
@@ -41,30 +43,28 @@ export class AddActivosComponent implements OnInit {
 
 
   getDepartamento() {
-    this._departamentosService.getDepartamentos().subscribe(
-      res => {
-        if (res.dataList
-        ) {
-          this.departamento = res.dataList
-        }
+    this._departamentosService.getDepartamentos().subscribe({
+      next:(res)=>{
+        if ( res.dataList ) {
+            this.departamento = res.dataList
+          }
       },
-      err => {
+      error:(err)=>{
         console.log(err);
       }
-    )
+    })
   }
   getTipo() {
-    this._TipoService.getTipoActivos().subscribe(
-      res => {
-        if (res.dataList
-        ) {
+    this._TipoService.getTipoActivos().subscribe({
+      next:(res)=>{
+        if (res.dataList) {
           this.tipo = res.dataList
         }
       },
-      err => {
+      error:(err)=>{
         console.log(err);
       }
-    )
+    })
   }
 
   onSubmit(form: any) {
@@ -77,6 +77,7 @@ export class AddActivosComponent implements OnInit {
           this.status = 'success'
           this.activo = response.dataList;
           this._router.navigate(['/activos']);
+          this.onSave.emit(true);
           form.reset();
 
         } else {
