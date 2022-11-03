@@ -6,7 +6,7 @@ import { ActivosFijosService } from '../../../Services/activos-fijos.service';
 import { ActivosFijo } from '../../../model/ActivoFijo';
 import { TipoActivoService } from '../../../Services/tipo-activo.service';
 import { TipoActivo } from '../../../model/TipoActivos';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
 @Component({
   selector: 'app-add-activos',
   templateUrl: './add-activos.component.html',
@@ -20,6 +20,7 @@ export class AddActivosComponent implements OnInit {
   public tipo: Array<TipoActivo>
   public departamento: Array<Departamento>;
   public date = new Date();
+
   @Output() onSave : EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
@@ -73,16 +74,17 @@ export class AddActivosComponent implements OnInit {
     this._activosService.addActivos(form.value).subscribe({
       next:(res)=>{
 
-        if (form) {
-          this.status = 'success'
-          this.activo = res.dataList;
+        if (res.succeded) {
+          /* this.activo = res.dataList; */
           this._router.navigate(['/activos']);
           this.onSave.emit(true);
           form.reset();
-
+          
         } else {
-          this.status = "error";
-          console.log(this.status)
+
+          res.errors.forEach((element: any) => {    
+            console.log(element);
+          });
         }
 
       },
@@ -92,6 +94,10 @@ export class AddActivosComponent implements OnInit {
       }
 
     });
+  }
+
+  Clear(form: any){
+
   }
 
 

@@ -9,14 +9,14 @@
       </div>
       <div class="input-container ic1 col-6">
         <select  class="input" id="departamentoId" #departamentoId="ngModel" [(ngModel)]="activo.departamentoId" name="departamentoId">
-          <option *ngFor="let dep of departamento" >{{dep.descripcion}}</option>
+          <option *ngFor="let dep of departamento" [value]="dep.departamentoId">{{dep.descripcion}}</option>
         </select>
         <div class="cut text-center">departamento</div>
 
       </div>
       <div class="input-container ic1 col-6">
         <select  class="input" id="tipoActivoId" #tipoActivoId="ngModel" [(ngModel)]="activo.tipoActivoId" name="tipoActivoId">
-          <option *ngFor="let tip of tipo" >{{tip.descripcion}}</option>
+          <option *ngFor="let tip of tipo" [value]="tip.tipoActivoId">{{tip.descripcion}}</option>
         </select>
         <div class="cut text-center">Tipo activo</div>
       </div>
