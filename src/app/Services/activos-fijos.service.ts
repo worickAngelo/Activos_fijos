@@ -26,7 +26,7 @@ export class ActivosFijosService {
       .set('Content-Type', 'application/json')
     return this._http.post(this.url + '/ActivoFijos', params, { headers: headers });
   }
-  
+
   editActivos(Activo: any): Observable<any> {
     let params = JSON.stringify(Activo);
     let headers = new HttpHeaders()
@@ -37,6 +37,6 @@ export class ActivosFijosService {
   deleteActivos(ActivoId: number): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.delete(this.url + '/ActivoFijos/'+ActivoId, {headers: headers});
+    return this._http.delete(this.url + '/ActivoFijos?ActivoFijoId='+ActivoId, {headers: headers});
   }
 }

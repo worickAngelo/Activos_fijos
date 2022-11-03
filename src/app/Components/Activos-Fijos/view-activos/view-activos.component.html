@@ -35,11 +35,11 @@
         {{activo.depreciacionAcumulada}}
       </td>
       <td>
-        <a routerLink="['']"></a>
+        <a (click)="delete(activo.activoFijoId)" type="button" data-dismiss="modal" class="btn btn-danger">Confirmar</a>
         <a routerLink="['']"></a>
         <a routerLink="['']"></a>
       </td>
     </tr>
   </tbody>
 </table>
-<app-add-activos (onSave)="getActivos()"></app-add-activos>
+

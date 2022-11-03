@@ -13,16 +13,30 @@ export class ActivosComponent implements OnInit {
 
   public url: any;
   public activos: Array<ActivosFijo>;
+
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
     private _activosService: ActivosFijosService
   ) {
-    this.activos = [];
     this.url = global.url;
   }
   ngOnInit(): void {
     this.getActivos();
+  }
+
+  delete(id:number){
+
+    this._activosService.deleteActivos(id).subscribe(
+      res =>{
+        this.getActivos();
+
+      },
+      err =>{
+        console.log(err);
+      }
+    )
+
   }
 
   getActivos() {
