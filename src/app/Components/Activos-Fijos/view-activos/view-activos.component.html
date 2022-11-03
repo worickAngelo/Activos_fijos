@@ -1,4 +1,6 @@
-<a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddActivos']" >Crear nuevo</a>
+<!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddActivos']" >Crear nuevo</a> -->
+<button class="btn btn-outline-primary m-1" type="" data-toggle="modal" [attr.data-target]="'#modalAdd'">Crear nuevo</button>
+
 <table  class="table  mt-5 col-10">
   <thead>
     <th>#</th>
@@ -43,3 +45,13 @@
   </tbody>
 </table>
 
+<!-- Modal -->
+<div class="modal fade" id="{{'modalAdd'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header d-flex flex-column">
+      <app-add-activos (onSave)="getActivos()"></app-add-activos>
+    </div>
+  </div>
+</div>
+</div>

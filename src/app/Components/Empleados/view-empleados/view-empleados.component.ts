@@ -27,17 +27,17 @@ export class ViewEmpleadosComponent implements OnInit {
   }
 
   getEmpleados() {
-    this._empleadoService.getEmpleados().subscribe(
-      res => {
+    this._empleadoService.getEmpleados().subscribe({
+      next:(res)=>{
         if (res.dataList
         ) {
           this.empleados = res.dataList
           console.log(res.dataList)
         }
       },
-      err => {
+      error:(err)=>{
         console.log(err);
       }
-    )
+  })
   }
 }

@@ -70,12 +70,12 @@ export class AddActivosComponent implements OnInit {
   onSubmit(form: any) {
     console.log(form.value)
 
-    this._activosService.addActivos(form.value).subscribe(
-      response => {
+    this._activosService.addActivos(form.value).subscribe({
+      next:(res)=>{
 
         if (form) {
           this.status = 'success'
-          this.activo = response.dataList;
+          this.activo = res.dataList;
           this._router.navigate(['/activos']);
           this.onSave.emit(true);
           form.reset();
@@ -86,12 +86,12 @@ export class AddActivosComponent implements OnInit {
         }
 
       },
-      error => {
+      error:(err)=>{
         this.status = 'error'
-        console.log(error)
+        console.log(err)
       }
 
-    );
+    });
   }
 
 

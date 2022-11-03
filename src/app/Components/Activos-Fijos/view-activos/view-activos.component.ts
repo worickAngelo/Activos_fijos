@@ -27,29 +27,29 @@ export class ActivosComponent implements OnInit {
 
   delete(id:number){
 
-    this._activosService.deleteActivos(id).subscribe(
-      res =>{
+    this._activosService.deleteActivos(id).subscribe({
+      next:(res)=>{
         this.getActivos();
 
       },
-      err =>{
+      error:(err)=>{
         console.log(err);
       }
-    )
+    })
 
   }
 
   getActivos() {
-    this._activosService.getActivos().subscribe(
-      res => {
+    this._activosService.getActivos().subscribe({
+      next:(res)=>{
         if (res.dataList
         ) {
           this.activos = res.dataList
         }
       },
-      err => {
+      error:(err)=>{
         console.log(err);
       }
-    )
+  })
   }
 }
