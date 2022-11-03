@@ -7,6 +7,7 @@ import { ActivosFijo } from '../../../model/ActivoFijo';
 import { TipoActivoService } from '../../../Services/tipo-activo.service';
 import { TipoActivo } from '../../../model/TipoActivos';
 import { DatePipe, NgFor } from '@angular/common';
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-add-activos',
   templateUrl: './add-activos.component.html',
@@ -20,6 +21,17 @@ export class AddActivosComponent implements OnInit {
   public tipo: Array<TipoActivo>
   public departamento: Array<Departamento>;
   public date = new Date();
+  
+  public form: FormGroup = new FormGroup({
+    activoFijoId : new FormControl(0),
+    descripcion : new FormControl(''),
+    departamentoId : new FormControl(0),
+    tipoActivoId : new FormControl(0),
+    fechaRegistro : new FormControl(null),
+    valorCompra : new FormControl(0),
+    depreciacionAcumulada : new FormControl(0),
+
+  });
 
   @Output() onSave : EventEmitter<any> = new EventEmitter<any>();
 
@@ -68,18 +80,13 @@ export class AddActivosComponent implements OnInit {
     })
   }
 
-  onSubmit(form: any) {
-    console.log(form.value)
-
-    this._activosService.addActivos(form.value).subscribe({
+  onSubmit() {
+    this._activosService.addActivos(this.form.value).subscribe({
       next:(res)=>{
 
-        if (res.succeded) {
-          /* this.activo = res.dataList; */
-          this._router.navigate(['/activos']);
+        if (res.succeded) {      
           this.onSave.emit(true);
-          form.reset();
-          
+          this.Clear();
         } else {
 
           res.errors.forEach((element: any) => {    
@@ -96,8 +103,16 @@ export class AddActivosComponent implements OnInit {
     });
   }
 
-  Clear(form: any){
-
+  Clear(){
+    this.form.patchValue({
+      activoFijoId: 0,
+      descripcion: '',
+      departamentoId: 0,
+      tipoActivoId: 0,
+      fechaRegistro: null,
+      valorCompra: 0,
+      depreciacionAcumulada: 0
+    })
   }
 
 

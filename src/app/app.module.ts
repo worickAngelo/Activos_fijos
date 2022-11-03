@@ -7,7 +7,9 @@ import { ActivosComponent } from './Components/Activos-Fijos/view-activos/view-a
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddActivosComponent } from './Components/Activos-Fijos/add-activos/add-activos.component';
 import { ViewEmpleadosComponent } from './Components/Empleados/view-empleados/view-empleados.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReutilizablesComponent } from './Components/reutilizables/reutilizables.component';
+import { TablaComponent } from './Components/Reutilizables/tabla/tabla.component';
 
 
 @NgModule({
@@ -16,12 +18,15 @@ import { FormsModule } from '@angular/forms';
     ActivosComponent,
     AddActivosComponent,
     ViewEmpleadosComponent,
+    ReutilizablesComponent,
+    TablaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,35 +1,35 @@
 <div class="container d-flex justify-content-center">
   <div class="form">
-    <form #activos="ngForm" class="row" (ngSubmit)="onSubmit(activos)">
+    <form [formGroup]="form" class="row" (ngSubmit)="onSubmit()">
       <div class="title col-12">Añadir activo fijo</div>
       <div class="subtitle col-12">Complete todos los campos!!</div>
       <div class="input-container ic1 col-6">
-        <input id="descripcion" #descripcion="ngModel" [(ngModel)]="activo.descripcion" name="descripcion" class="input" type="text" />
+        <input id="descripcion" formControlName="descripcion" name="descripcion" class="input" type="text" />
         <div class="cut text-center">Descripcion</div>
       </div>
       <div class="input-container ic1 col-6">
-        <select  class="input" id="departamentoId" #departamentoId="ngModel" [(ngModel)]="activo.departamentoId" name="departamentoId">
+        <select  class="input" id="departamentoId" formControlName="departamentoId" name="departamentoId">
           <option *ngFor="let dep of departamento" [value]="dep.departamentoId">{{dep.descripcion}}</option>
         </select>
         <div class="cut text-center">departamento</div>
 
       </div>
       <div class="input-container ic1 col-6">
-        <select  class="input" id="tipoActivoId" #tipoActivoId="ngModel" [(ngModel)]="activo.tipoActivoId" name="tipoActivoId">
+        <select  class="input" id="tipoActivoId" formControlName="tipoActivoId" name="tipoActivoId">
           <option *ngFor="let tip of tipo" [value]="tip.tipoActivoId">{{tip.descripcion}}</option>
         </select>
         <div class="cut text-center">Tipo activo</div>
       </div>
       <div class="input-container ic1 col-6">
-        <input  id="fechaRegistro" class="input" type="date" placeholder="" id="fechaRegistro" #fechaRegistro="ngModel" [(ngModel)]="activo.fechaRegistro" name="fechaRegistro" />
+        <input  id="fechaRegistro" class="input" type="date" placeholder="" id="fechaRegistro" formControlName="fechaRegistro" name="fechaRegistro" />
         <div class="cut text-center">Fecha</div>
       </div>
       <div class="input-container ic1 col-12">
-        <input id="valorCompra" class="input" type="number" placeholder="" id="valorCompra" #valorCompra="ngModel" [(ngModel)]="activo.valorCompra" name="valorCompra"/>
+        <input id="valorCompra" class="input" type="number" placeholder="" id="valorCompra" formControlName="valorCompra" name="valorCompra"/>
         <div class="cut text-center">Valor compra</div>
       </div>
       <div class="input-container ic1 col-12">
-        <input  id="depreciacionAcumulada" class="input" type="number" placeholder="" id="depreciacionAcumulada" #depreciacionAcumulada="ngModel" [(ngModel)]="activo.depreciacionAcumulada" name="depreciacionAcumulada"/>
+        <input  id="depreciacionAcumulada" class="input" type="number" placeholder="" id="depreciacionAcumulada" formControlName="depreciacionAcumulada" name="depreciacionAcumulada"/>
         <div class="cut text-center">Depreciacion</div>
       </div>
      <!--  <div class="input-container ic1">
@@ -39,7 +39,7 @@
         </select>
         <div class="cut text-center">Estado</div>
       </div> -->
-      <button type="submit" class="submit">submit</button>
+      <button type="submit" class="submit">Guardar</button>
     </form>
   </div>
 </div>

@@ -1,49 +1,18 @@
 <!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddActivos']" >Crear nuevo</a> -->
 <button class="btn btn-outline-primary m-1" type="" data-toggle="modal" [attr.data-target]="'#modalAdd'">Crear nuevo</button>
 
-<table  class="table  mt-5 col-10">
-  <thead>
-    <th>#</th>
-    <th>descripcion</th>
-    <th>departamentoId</th>
-    <th>tipoActivoId</th>
-    <th>fechaRegistro</th>
-    <th>valorCompra</th>
-    <th>depreciacionAcumulada</th>
-    <th>Actions</th>
+<app-tabla [body]="activos" 
+[headers]="[
+'activoFijoId',
+'descripcion',
+'departamentoId',
+'tipoActivoId',
+'fechaRegistro',
+'valorCompra',
+'depreciacionAcumulada',
+'Acciones'
+]" (OnDelete)="delete($event)"></app-tabla>
 
-  </thead>
-  <tbody class="table-group-divider">
-    <tr class="table-active" *ngFor="let activo of activos">
-      <td>
-        {{activo.activoFijoId}}
-      </td>
-      <td>
-        {{activo.descripcion}}
-      </td>
-      <td>
-        {{activo.departamentoId}}
-      </td>
-      <td>
-        {{activo.tipoActivoId}}
-      </td>
-      <td>
-        {{activo.fechaRegistro}}
-      </td>
-      <td>
-        {{activo.valorCompra}}
-      </td>
-      <td>
-        {{activo.depreciacionAcumulada}}
-      </td>
-      <td>
-        <a (click)="delete(activo.activoFijoId)" type="button" data-dismiss="modal" class="btn btn-danger">Confirmar</a>
-        <a routerLink="['']"></a>
-        <a routerLink="['']"></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
 <!-- Modal -->
 <div class="modal fade" id="{{'modalAdd'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
