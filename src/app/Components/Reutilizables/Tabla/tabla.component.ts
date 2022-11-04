@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { faTrash, faPenToSquare,faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tabla',
@@ -9,8 +10,14 @@ export class TablaComponent implements OnInit,OnChanges {
   @Input() public headers: string[];  
   @Input() public body: any[];  
   names:any[];
+  faTrash = faTrash 
+  faPenToSquare = faPenToSquare
+  faEye=faEye
 
   @Output() public OnDelete = new EventEmitter();
+  @Output() public OnView = new EventEmitter();
+  @Output() public OnEdit = new EventEmitter();
+
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
     if(this.body){  
@@ -26,16 +33,17 @@ export class TablaComponent implements OnInit,OnChanges {
   }
 
   get(){
-    console.log(this.body);
     this.names = Object.getOwnPropertyNames(this.body[0]);
-    console.log(this.names);
-
   }
 
   borrar(id:number){
-    console.log(this.body);
-    return;
     this.OnDelete.emit(id);
+  }
+  Ver(id:number){
+    this.OnView.emit(id);
+  }
+  Editar(id:number){
+    this.OnEdit.emit(id);
   }
 
 }

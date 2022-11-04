@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ɵɵNgOnChangesFeature } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ɵɵNgOnChangesFeature } from '@angular/core';
 import { Departamento } from '../../../model/Departamentos';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepartamentoService } from '../../../Services/departamento.service';
@@ -34,6 +34,9 @@ export class AddActivosComponent implements OnInit {
   });
 
   @Output() onSave : EventEmitter<any> = new EventEmitter<any>();
+  public inEdit = false
+  public inView = false
+
 
   constructor(
     private _router: Router,
@@ -43,7 +46,6 @@ export class AddActivosComponent implements OnInit {
     private _TipoService: TipoActivoService,
   ) {
     this.departamento = [];
-    this.activo = new ActivosFijo(0,'',0,0,this.date,0,0);
     this.tipo = [];
 
   }
@@ -80,7 +82,7 @@ export class AddActivosComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  Save(){
     this._activosService.addActivos(this.form.value).subscribe({
       next:(res)=>{
 
@@ -101,6 +103,37 @@ export class AddActivosComponent implements OnInit {
       }
 
     });
+  }
+
+  Edit(){
+    this._activosService.editActivos(this.form.value).subscribe({
+      next:(res)=>{
+
+        if (res.succeded) {      
+          this.onSave.emit(true);
+          this.Clear();
+        } else {
+
+          res.errors.forEach((element: any) => {    
+            console.log(element);
+          });
+        }
+
+      },
+      error:(err)=>{
+        this.status = 'error'
+        console.log(err)
+      }
+
+    });
+  }
+
+  onSubmit() {
+    if(this.inEdit == false){
+      this.Save();
+    }else{
+      this.Edit();
+    }
   }
 
   Clear(){

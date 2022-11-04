@@ -1,17 +1,19 @@
-<table  class="table  mt-5 col-10">
-  <thead>
-    <th *ngFor="let item of headers">{{item}}</th>
-  </thead>
-  <tbody class="table-group-divider">
-    <tr class="table-active" *ngFor="let item of body">
-      <td *ngFor="let item2 of names">
-        {{item[item2]}}
-      </td>     
-      <td>
-        <a (click)="borrar(item.activoFijoId)" type="button" data-dismiss="modal" class="btn btn-danger">Confirmar</a>
-        <a routerLink="['']"></a>
-        <a routerLink="['']"></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th *ngFor="let item of headers">{{item}}</th>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr class="table-active" *ngFor="let item of body">
+        <td *ngFor="let item2 of names">
+          {{item[item2]}}
+        </td>     
+        <td>
+          <a (click)="Ver(item.activoFijoId)" type="button" data-toggle="modal" class="btn btn-primary  mr-1" [attr.data-target]="'#modalForm'"><fa-icon [icon]="faEye"></fa-icon></a>
+          <a (click)="Editar(item.activoFijoId)" type="button" data-toggle="modal" class="btn btn-warning  mr-1" [attr.data-target]="'#modalForm'"><fa-icon [icon]="faPenToSquare"></fa-icon></a>
+          <a (click)="borrar(item.activoFijoId)" type="button" data-toggle="modal" class="btn btn-danger "><fa-icon [icon]="faTrash"></fa-icon></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

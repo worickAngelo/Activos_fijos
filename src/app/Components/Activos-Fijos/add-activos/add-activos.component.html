@@ -1,8 +1,11 @@
+<div class="modal fade" id="{{'modalForm'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex flex-column ">
 <div class="container d-flex justify-content-center">
   <div class="form">
     <form [formGroup]="form" class="row" (ngSubmit)="onSubmit()">
-      <div class="title col-12">Añadir activo fijo</div>
-      <div class="subtitle col-12">Complete todos los campos!!</div>
+      <div class="title col-12">Activo fijo</div>
       <div class="input-container ic1 col-6">
         <input id="descripcion" formControlName="descripcion" name="descripcion" class="input" type="text" />
         <div class="cut text-center">Descripcion</div>
@@ -21,15 +24,15 @@
         <div class="cut text-center">Tipo activo</div>
       </div>
       <div class="input-container ic1 col-6">
-        <input  id="fechaRegistro" class="input" type="date" placeholder="" id="fechaRegistro" formControlName="fechaRegistro" name="fechaRegistro" />
+        <input  id="fechaRegistro" class="input" type="date" placeholder="" formControlName="fechaRegistro" name="fechaRegistro" />
         <div class="cut text-center">Fecha</div>
       </div>
       <div class="input-container ic1 col-12">
-        <input id="valorCompra" class="input" type="number" placeholder="" id="valorCompra" formControlName="valorCompra" name="valorCompra"/>
+        <input id="valorCompra" class="input" type="number" placeholder=""  formControlName="valorCompra" name="valorCompra"/>
         <div class="cut text-center">Valor compra</div>
       </div>
       <div class="input-container ic1 col-12">
-        <input  id="depreciacionAcumulada" class="input" type="number" placeholder="" id="depreciacionAcumulada" formControlName="depreciacionAcumulada" name="depreciacionAcumulada"/>
+        <input  id="depreciacionAcumulada" class="input" type="number" placeholder=""  formControlName="depreciacionAcumulada" name="depreciacionAcumulada"/>
         <div class="cut text-center">Depreciacion</div>
       </div>
      <!--  <div class="input-container ic1">
@@ -39,7 +42,11 @@
         </select>
         <div class="cut text-center">Estado</div>
       </div> -->
-      <button type="submit" class="submit">Guardar</button>
+      <button type="submit" class="submit" *ngIf="this.inView === false">Guardar</button>
     </form>
   </div>
+</div>
+</div>
+</div>
+</div>
 </div>

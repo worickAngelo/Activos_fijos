@@ -1,9 +1,9 @@
 <!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddActivos']" >Crear nuevo</a> -->
-<button class="btn btn-outline-primary m-1" type="" data-toggle="modal" [attr.data-target]="'#modalAdd'">Crear nuevo</button>
+<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal" [attr.data-target]="'#modalForm'">Crear nuevo</button>
 
 <app-tabla [body]="activos" 
 [headers]="[
-'activoFijoId',
+'#',
 'descripcion',
 'departamentoId',
 'tipoActivoId',
@@ -11,15 +11,7 @@
 'valorCompra',
 'depreciacionAcumulada',
 'Acciones'
-]" (OnDelete)="delete($event)"></app-tabla>
+]" (OnDelete)="delete($event)" (OnView)="getActivoById($event,2)" (OnEdit)="getActivoById($event,3)"></app-tabla>
 
 <!-- Modal -->
-<div class="modal fade" id="{{'modalAdd'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header d-flex flex-column ">
-      <app-add-activos (onSave)="getActivos()"></app-add-activos>
-    </div>
-  </div>
-</div>
-</div>
+<app-add-activos (onSave)="getActivos()"></app-add-activos>
