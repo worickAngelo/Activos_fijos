@@ -94,6 +94,7 @@ export class ActivosComponent implements OnInit {
 
   CreateMode(){ 
     this.addmodal.inView=false;
+    this.addmodal.inEdit=false;
     this.addmodal.form.enable();
     this.addmodal.Clear();
   }
@@ -110,9 +111,11 @@ export class ActivosComponent implements OnInit {
           if(mode == 2){      
             this.addmodal.form.disable();
             this.addmodal.inView=true;
+            this.addmodal.inEdit=false;
 
           }else{
             this.addmodal.inView=false;
+            this.addmodal.inEdit=true;
             this.addmodal.form.enable();
           }
 
