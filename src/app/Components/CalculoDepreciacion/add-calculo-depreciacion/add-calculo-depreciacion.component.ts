@@ -1,35 +1,31 @@
 import { Component, EventEmitter, Input, OnInit, Output, ɵɵNgOnChangesFeature } from '@angular/core';
-import { Departamento } from '../../../model/Departamentos';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DepartamentoService } from '../../../Services/departamento.service';
 import { ActivosFijosService } from '../../../Services/activos-fijos.service';
+import { CalculoDepreciacion } from '../../../model/CalculoDepreciacion';
+import { CalculoDepreciacionService } from '../../../Services/calculo-depreciacion.service';
 import { ActivosFijo } from '../../../model/ActivoFijo';
-import { TipoActivoService } from '../../../Services/tipo-activo.service';
-import { TipoActivo } from '../../../model/TipoActivos';
 import { DatePipe, NgFor } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 @Component({
-  selector: 'app-add-activos',
-  templateUrl: './add-activos.component.html',
-  styleUrls: ['./add-activos.component.css'],
-  providers: [DepartamentoService, ActivosFijosService]
+  selector: 'app-add-calculo-depreciacion',
+  templateUrl: './add-calculo-depreciacion.component.html',
+  styleUrls: ['./add-calculo-depreciacion.component.css'],
+  providers:[CalculoDepreciacionService,ActivosFijosService]
 })
-export class AddActivosComponent implements OnInit {
+export class AddCalculoDepreciacionComponent implements OnInit {
   public url: any;
   public status: any;
-  public activo: ActivosFijo;
-  public tipo: Array<TipoActivo>
-  public departamento: Array<Departamento>;
-  public date = new Date();
+  public calculoDepreciacion: CalculoDepreciacion;
+  public activosFijo: Array<ActivosFijo>;
 
   public form: FormGroup = new FormGroup({
-    activoFijoId : new FormControl(0),
-    descripcion : new FormControl(''),
-    departamentoId : new FormControl(0),
-    tipoActivoId : new FormControl(0),
-    fechaRegistro : new FormControl(null),
-    valorCompra : new FormControl(0),
-    depreciacionAcumulada : new FormControl(0),
+    calculoDepreciacionId : new FormControl(0),
+    añoProceso : new FormControl(''),
+    mesProceso : new FormControl(0),
+    fechaProceso : new FormControl(0),
+    montoDepreciado : new FormControl(null),
+    cuentaCompra : new FormControl(0),
+    cuentaDepreciacion : new FormControl(0),
 
   });
 
@@ -38,43 +34,27 @@ export class AddActivosComponent implements OnInit {
   public inView = false
 
 
+
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
     private _activosService: ActivosFijosService,
-    private _departamentosService: DepartamentoService,
-    private _TipoService: TipoActivoService,
+    private _depreciacionAcumuladaService: CalculoDepreciacionService,
   ) {
-    this.departamento = [];
-    this.tipo = [];
-
-  }
+    this.activosFijo = [];
+   }
 
   ngOnInit(): void {
-    this.getDepartamento();
-    this.getTipo();
+    this.getActivosFijos();
   }
 
 
-
-  getDepartamento() {
-    this._departamentosService.getDepartamentos().subscribe({
+  getActivosFijos() {
+    this._activosService.getActivos().subscribe({
       next:(res)=>{
         if ( res.dataList ) {
-            this.departamento = res.dataList
+            this.activosFijo = res.dataList
           }
-      },
-      error:(err)=>{
-        console.log(err);
-      }
-    })
-  }
-  getTipo() {
-    this._TipoService.getTipoActivos().subscribe({
-      next:(res)=>{
-        if (res.dataList) {
-          this.tipo = res.dataList
-        }
       },
       error:(err)=>{
         console.log(err);
@@ -83,7 +63,7 @@ export class AddActivosComponent implements OnInit {
   }
 
   Save(){
-    this._activosService.addActivos(this.form.value).subscribe({
+    this._depreciacionAcumuladaService.addCalculoDepreciacion(this.form.value).subscribe({
       next:(res)=>{
 
         if (res.succeded) {
@@ -106,7 +86,7 @@ export class AddActivosComponent implements OnInit {
   }
 
   Edit(){
-    this._activosService.editActivos(this.form.value).subscribe({
+    this._depreciacionAcumuladaService.editCalculoDepreciacion(this.form.value).subscribe({
       next:(res)=>{
 
         if (res.succeded) {
@@ -138,13 +118,14 @@ export class AddActivosComponent implements OnInit {
 
   Clear(){
     this.form.patchValue({
+      calculoDepreciacionId: 0,
+      añoProceso: '',
+      mesProceso: 0,
       activoFijoId: 0,
-      descripcion: '',
-      departamentoId: 0,
-      tipoActivoId: 0,
-      fechaRegistro: null,
-      valorCompra: 0,
-      depreciacionAcumulada: 0
+      fechaProceso: null,
+      montoDepreciado: 0,
+      cuentaCompra: 0,
+      cuentaDepreciacion: 0
     })
   }
 

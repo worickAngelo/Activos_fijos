@@ -10,6 +10,9 @@ import { ViewEmpleadosComponent } from './Components/Empleados/view-empleados/vi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablaComponent } from './Components/Reutilizables/Tabla/tabla.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AddEmpleadoComponent } from './Components/Empleados/add-empleado/add-empleado.component';
+import { ViewCalculoDepreciacionComponent } from './Components/CalculoDepreciacion/view-calculo-depreciacion/view-calculo-depreciacion.component';
+import { AddCalculoDepreciacionComponent } from './Components/CalculoDepreciacion/add-calculo-depreciacion/add-calculo-depreciacion.component';
 
 
 
@@ -20,6 +23,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AddActivosComponent,
     ViewEmpleadosComponent,
     TablaComponent,
+    AddEmpleadoComponent,
+    ViewCalculoDepreciacionComponent,
+    AddCalculoDepreciacionComponent,
   ],
   imports: [
     BrowserModule,

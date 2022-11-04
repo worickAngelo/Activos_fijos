@@ -1,6 +1,6 @@
 export class TipoPersona{
   constructor(
-    public _id: string,
+    public tipoPersonaId: string,
     public descripcion: string,
     public estado: boolean,
   ){}

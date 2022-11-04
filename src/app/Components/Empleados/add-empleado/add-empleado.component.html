@@ -1,0 +1,49 @@
+<div class="modal fade" id="{{'modalForm'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex flex-column ">
+        <div class="container d-flex justify-content-center">
+          <div class="form">
+            <form [formGroup]="form" class="row" (ngSubmit)="onSubmit()">
+              <div class="title col-12">Empleado</div>
+              <div class="input-container ic1 col-6">
+                <input id="nombre" formControlName="nombre" name="nombre" class="input" type="text" />
+                <div class="cut text-center">nombre</div>
+              </div>
+              <div class="input-container ic1 col-6">
+                <input id="cedula" formControlName="cedula" name="cedula" class="input" type="text" />
+                <div class="cut text-center">cedula</div>
+              </div>
+              <div class="input-container ic1 col-6">
+                <select class="input" id="departamentoId" formControlName="departamentoId" name="departamentoId">
+                  <option *ngFor="let dep of departamento" [value]="dep.departamentoId">{{dep.descripcion}}</option>
+                </select>
+                <div class="cut text-center">departamento</div>
+              </div>
+              <div class="input-container ic1 col-6">
+                <select class="input" id="tipoPersonaId" formControlName="tipoPersonaId" name="tipoPersonaId">
+                  <option *ngFor="let tip of tipoPersona" [value]="tip.tipoPersonaId">{{tip.descripcion}}</option>
+                </select>
+                <div class="cut text-center">Tipo persona</div>
+              </div>
+              <div class="input-container ic1 col-6">
+                <select class="input" id="estado" formControlName="estado" name="estado">
+                  <option  [value]="activo">Activo</option>
+                  <option  [value]="inactivo">Inactivo</option>
+                </select>
+                <div class="cut text-center">Estado</div>
+              </div>
+              <div class="input-container ic1 col-6">
+                <input id="fechaIngreso" class="input" type="date" placeholder="" formControlName="fechaIngreso"
+                  name="fechaIngreso" />
+                <div class="cut text-center">fechaIngreso</div>
+              </div>
+              <button type="submit" class="submit" *ngIf="this.inView === false">Guardar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

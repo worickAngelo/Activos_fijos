@@ -1,0 +1,18 @@
+<!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddActivos']" >Crear nuevo</a> -->
+<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal"
+  [attr.data-target]="'#modalForm'">Crear nuevo</button>
+
+<app-tabla [body]="depreciacions" [headers]="[
+'#',
+'añoProceso',
+'mesProceso',
+'activoFijoId',
+'fechaProceso',
+'montoDepreciado',
+'cuentaCompra',
+'cuentaDepreciacion',
+'Acciones'
+]" (OnDelete)="delete($event)" (OnView)="getDepreciacionByid($event,2)" (OnEdit)="getDepreciacionByid($event,3)"></app-tabla>
+
+<!-- Modal -->
+<app-add-calculo-depreciacion (onSave)="getDepreciacion()"></app-add-calculo-depreciacion>

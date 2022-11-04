@@ -36,6 +36,6 @@ export class CalculoDepreciacionService {
   deleteCalculoDepreciacion(calculoDepreciacionId: number): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.delete(this.url + '/CalculoDepreciacion/'+calculoDepreciacionId, {headers: headers});
+    return this._http.delete(this.url + '/CalculoDepreciacion='+calculoDepreciacionId, {headers: headers});
   }
 }

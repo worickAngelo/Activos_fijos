@@ -1,48 +1,16 @@
+<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal" [attr.data-target]="'#modalForm'">Crear nuevo</button>
 
-<a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['']" href="#">Crear nuevo</a>
+<app-tabla [body]="empleados"
+[headers]="[
+'#',
+'nombre',
+'cedula',
+'departamentoId',
+'tipoPersonaId',
+'fechaIngreso',
+'estado',
+'Acciones'
+]" (OnDelete)="delete($event)" (OnView)="getEmpleadosById($event,2)" (OnEdit)="getEmpleadosById($event,3)"></app-tabla>
 
-<table  class="table  mt-5 col-10">
-    <thead>
-      <th>#</th>
-      <th>Nombre</th>
-      <th>Cedula</th>
-      <th>Departamento</th>
-      <th>Tipo de persona</th>
-      <th>Fecha ingreso</th>
-      <th>Estado</th>
-      <th>Acciones</th>
-  
-    </thead>
-    <tbody class="table-group-divider">
-      <tr class="table-active" *ngFor="let empleado of empleados">
-        <td>
-          {{empleado.empleadoId}}
-        </td>
-        <td>
-          {{empleado.nombre}}
-        </td>
-        <td>
-          {{empleado.cedula}}
-        </td>
-        <td>
-          {{empleado.departamentoId}}
-        </td>
-        <td>
-          {{empleado.tipoPersonaId}}
-        </td>
-        <td>
-          {{empleado.fechaIngreso}}
-        </td>
-        <td>
-          {{empleado.estado}}
-        </td>
-        <td>
-          <a routerLink="['']">Ver </a>
-
-          <a routerLink="['']">Editar </a>
-          
-          <a routerLink="['']">Eliminar </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<!-- Modal -->
+<app-add-empleado (onSave)="getEmpleados()"></app-add-empleado>

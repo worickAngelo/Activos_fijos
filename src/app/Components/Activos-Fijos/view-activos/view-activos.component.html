@@ -1,8 +1,8 @@
 <!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddActivos']" >Crear nuevo</a> -->
-<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal" [attr.data-target]="'#modalForm'">Crear nuevo</button>
+<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal"
+  [attr.data-target]="'#modalForm'">Crear nuevo</button>
 
-<app-tabla [body]="activos" 
-[headers]="[
+<app-tabla [body]="activos" [headers]="[
 '#',
 'descripcion',
 'departamentoId',
