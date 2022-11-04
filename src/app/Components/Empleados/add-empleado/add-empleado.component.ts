@@ -40,20 +40,19 @@ export class AddEmpleadoComponent implements OnInit {
   public form: FormGroup = new FormGroup({
     empleadoId : new FormControl(0),
     nombre : new FormControl(''),
-    cedula : new FormControl(0),
+    cedula : new FormControl(''),
     departamentoId : new FormControl(0),
-    tipoPersonaId : new FormControl(null),
+    tipoPersonaId : new FormControl(0),
     fechaIngreso : new FormControl(0),
     estado : new FormControl(0),
-
   });
   Clear(){
     this.form.patchValue({
       empleadoId: 0,
       nombre: '',
-      cedula: 0,
+      cedula: '',
       departamentoId: 0,
-      tipoPersonaId: null,
+      tipoPersonaId: 0,
       fechaIngreso: 0,
       estado: 0
     })
