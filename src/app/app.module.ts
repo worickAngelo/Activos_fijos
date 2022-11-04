@@ -13,6 +13,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddEmpleadoComponent } from './Components/Empleados/add-empleado/add-empleado.component';
 import { ViewCalculoDepreciacionComponent } from './Components/CalculoDepreciacion/view-calculo-depreciacion/view-calculo-depreciacion.component';
 import { AddCalculoDepreciacionComponent } from './Components/CalculoDepreciacion/add-calculo-depreciacion/add-calculo-depreciacion.component';
+import { ViewCuentasComponent } from './Components/Cuentas/view-cuentas/view-cuentas.component';
+import { AddCuentasComponent } from './Components/Cuentas/add-cuentas/add-cuentas.component';
 
 
 
@@ -26,6 +28,8 @@ import { AddCalculoDepreciacionComponent } from './Components/CalculoDepreciacio
     AddEmpleadoComponent,
     ViewCalculoDepreciacionComponent,
     AddCalculoDepreciacionComponent,
+    ViewCuentasComponent,
+    AddCuentasComponent,
   ],
   imports: [
     BrowserModule,

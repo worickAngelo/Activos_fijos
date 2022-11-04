@@ -1,6 +1,6 @@
 export class CalculoDepreciacion{
   constructor(
-    public calculoDepreciacionId: string,
+    public calculoDepreciacionId: number,
     public añoProceso: number,
     public mesProceso: number,
     public activoFijoId:number,

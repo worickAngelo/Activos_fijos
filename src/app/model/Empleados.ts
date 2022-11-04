@@ -1,6 +1,6 @@
 export class Empleado{
   constructor(
-    public empleadoId: string,
+    public empleadoId: number,
     public nombre: string,
     public cedula: string,
     public departamentoId:number,

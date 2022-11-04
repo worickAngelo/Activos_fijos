@@ -1,6 +1,6 @@
 export class Cuenta{
   constructor(
-    public _id: string,
+    public cuentaId: number,
     public descripcion: string,
     public estado: boolean,
 
