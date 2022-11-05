@@ -17,6 +17,8 @@ import { ViewCuentasComponent } from './Components/Cuentas/view-cuentas/view-cue
 import { AddCuentasComponent } from './Components/Cuentas/add-cuentas/add-cuentas.component';
 import { ViewDepartamentosComponent } from './Components/Departamentos/view-departamentos/view-departamentos.component';
 import { AddDepartamentosComponent } from './Components/Departamentos/add-departamentos/add-departamentos.component';
+import { ViewTipoActivosComponent } from './Components/TipoActivos/view-tipo-activos/view-tipo-activos.component';
+import { AddTipoActivosComponent } from './Components/TipoActivos/add-tipo-activos/add-tipo-activos.component';
 
 
 
@@ -34,6 +36,8 @@ import { AddDepartamentosComponent } from './Components/Departamentos/add-depart
     AddCuentasComponent,
     ViewDepartamentosComponent,
     AddDepartamentosComponent,
+    ViewTipoActivosComponent,
+    AddTipoActivosComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddtipoActivos']" >Crear nuevo</a> -->
+<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal"
+  [attr.data-target]="'#modalForm'">Crear nuevo</button>
+
+<app-tabla [body]="tipoActivos" [headers]="[
+'#',
+'descripcion',
+'Cuenta contable compra',
+'Cuenta contable depreciacion',
+'Estado',
+'Acciones'
+]" (OnDelete)="delete($event)" (OnView)="gettipoActivoById($event,2)" (OnEdit)="gettipoActivoById($event,3)"></app-tabla>
+
+<!-- Modal -->
+<app-add-tipo-activos (onSave)="gettipoActivos()"></app-add-tipo-activos>

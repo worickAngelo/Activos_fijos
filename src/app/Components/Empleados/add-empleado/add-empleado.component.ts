@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ɵɵNgOnChangesFeature } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ɵɵNgOnChangesFeature } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EmpleadosService } from '../../../Services/empleados.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,8 +19,9 @@ export class AddEmpleadoComponent implements OnInit {
   public empleado: Empleado;
   public tipoPersona: Array<TipoPersona>
   public departamento: Array<Departamento>;
-  public activo:boolean;
-  public inactivo:boolean;
+
+  @ViewChild('closebutton') closebutton: { nativeElement: { click: () => void; }; }
+
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
@@ -28,8 +29,6 @@ export class AddEmpleadoComponent implements OnInit {
     private _departamentosService: DepartamentoService,
     private _tipoPersona: TipoPersonasService,
   ) {
-    this.activo = true
-    this.inactivo = false
    }
 
   ngOnInit(): void {
@@ -100,6 +99,7 @@ export class AddEmpleadoComponent implements OnInit {
         if (res.succeded) {
           this.onSave.emit(true);
           this.Clear();
+          this.closebutton.nativeElement.click();
         } else {
 
           res.errors.forEach((element: any) => {
@@ -123,6 +123,7 @@ export class AddEmpleadoComponent implements OnInit {
         if (res.succeded) {
           this.onSave.emit(true);
           this.Clear();
+          this.closebutton.nativeElement.click();
         } else {
           res.errors.forEach((element: any) => {
             console.log(element);

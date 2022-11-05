@@ -1,28 +1,33 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ɵɵNgOnChangesFeature } from '@angular/core';
-import { Cuenta } from '../../../model/Cuentas';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CuentasService } from '../../../Services/cuentas.service';
-import { DatePipe, NgFor } from '@angular/common';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Cuenta } from 'src/app/model/Cuentas';
+import { TipoActivo } from 'src/app/model/TipoActivos';
+import { CuentasService } from 'src/app/Services/cuentas.service';
+import { TipoActivoService } from 'src/app/Services/tipo-activo.service';
 
 @Component({
-  selector: 'app-add-cuentas',
-  templateUrl: './add-cuentas.component.html',
-  styleUrls: ['./add-cuentas.component.css'],
-  providers: [CuentasService]
+  selector: 'app-add-tipo-activos',
+  templateUrl: './add-tipo-activos.component.html',
+  styleUrls: ['./add-tipo-activos.component.css'],
+  providers:[CuentasService]
 })
-export class AddCuentasComponent implements OnInit {
+export class AddTipoActivosComponent implements OnInit {
 
   public url: any;
   public status: any;
-  public cuenta: Cuenta;
-  public cuentas: Array<Cuenta>
+  public tipoActivos: Array<TipoActivo>;
+  public tipoActivo: TipoActivo;
+  public Cuentas: Array<Cuenta>;
+
 
   @ViewChild('closebutton') closebutton: { nativeElement: { click: () => void; }; }
 
   public form: FormGroup = new FormGroup({
-    cuentaId : new FormControl(0),
+    tipoActivoId : new FormControl(0),
     descripcion : new FormControl(''),
+    cuentaContableCompra: new FormControl(0),
+    cuentaContableDepreciacion: new FormControl(0),
     estado : new FormControl(0),
   });
 
@@ -30,18 +35,35 @@ export class AddCuentasComponent implements OnInit {
   public inEdit = false
   public inView = false
 
+
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
-    private _cuentaService: CuentasService,
+    private _tipoActivosService: TipoActivoService,
+    private _CuentasService: CuentasService
   ) {
-   }
+    this.Cuentas = [];
+  }
 
   ngOnInit(): void {
+    this.getCuentas();
+  }
+
+  getCuentas() {
+    this._CuentasService.getCuentas().subscribe({
+      next:(res)=>{
+        if ( res.dataList ) {
+            this.Cuentas = res.dataList
+          }
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
   }
 
   Save(){
-    this._cuentaService.addCuentas(this.form.value).subscribe({
+    this._tipoActivosService.addTipoActivos(this.form.value).subscribe({
       next:(res)=>{
 
         if (res.succeded) {
@@ -65,7 +87,7 @@ export class AddCuentasComponent implements OnInit {
   }
 
   Edit(){
-    this._cuentaService.editCuentas(this.form.value).subscribe({
+    this._tipoActivosService.editTipoActivos(this.form.value).subscribe({
       next:(res)=>{
 
         if (res.succeded) {
@@ -98,11 +120,12 @@ export class AddCuentasComponent implements OnInit {
 
   Clear(){
     this.form.patchValue({
-      cuentaId: 0,
+      tipoActivoId: 0,
       descripcion: '',
-      estado: 0,
+      cuentaContableCompra: 0,
+      cuentaContableDepreciacion: 0,
+      estado: 0
     })
   }
-
 
 }

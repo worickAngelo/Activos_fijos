@@ -1,36 +1,31 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CalculoDepreciacionService } from '../../../Services/calculo-depreciacion.service';
-import { CalculoDepreciacion } from '../../../model/CalculoDepreciacion';
-import { global } from '../../../Services/Global';
+import { TipoActivo } from 'src/app/model/TipoActivos';
+import { TipoActivoService } from 'src/app/Services/tipo-activo.service';
 import Swal from 'sweetalert2';
-import { AddCalculoDepreciacionComponent } from '../../CalculoDepreciacion/add-calculo-depreciacion/add-calculo-depreciacion.component';
-import { formatDate } from '@angular/common';
+import { AddTipoActivosComponent } from '../add-tipo-activos/add-tipo-activos.component';
 
 @Component({
-  selector: 'app-view-calculo-depreciacion',
-  templateUrl: './view-calculo-depreciacion.component.html',
-  styleUrls: ['./view-calculo-depreciacion.component.css'],
-  providers: [CalculoDepreciacionService]
+  selector: 'app-view-tipo-activos',
+  templateUrl: './view-tipo-activos.component.html',
+  styleUrls: ['./view-tipo-activos.component.css']
 })
-export class ViewCalculoDepreciacionComponent implements OnInit {
-
+export class ViewTipoActivosComponent implements OnInit {
   public url: any;
-  public depreciacion: CalculoDepreciacion;
-  public depreciacions: Array<CalculoDepreciacion>;
-  @ViewChild(AddCalculoDepreciacionComponent) addmodal: AddCalculoDepreciacionComponent;
+  public tipoActivos: Array<TipoActivo>;
+  public tipoActivo: TipoActivo;
+  @ViewChild(AddTipoActivosComponent) addmodal: AddTipoActivosComponent;
+
   constructor(
     private _router: Router,
     private route: ActivatedRoute,
-    private _depreciacionService: CalculoDepreciacionService
-  ) {     this.depreciacions = []}
+    private _tipoActivosService: TipoActivoService
+  ) { }
 
   ngOnInit(): void {
-    this.url = global.url;
-    this.getDepreciacion();
+    this.gettipoActivos();
   }
-
-  delete(calculoDepreciacionId:number){
+  delete(id:number){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success ml-3',
@@ -38,21 +33,21 @@ export class ViewCalculoDepreciacionComponent implements OnInit {
       },
       buttonsStyling: false
     })
-
+    
     swalWithBootstrapButtons.fire({
       title: 'Estas seguro?',
       text: "Esta accion no se puede revertir!",
       icon: 'warning',
-      showCancelButton: true,
+      showCancelButton: true, 
       confirmButtonText: 'Si, borrar!',
       cancelButtonText: 'No, cancelar!',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-
-        this._depreciacionService.deleteCalculoDepreciacion(calculoDepreciacionId).subscribe({
+        
+        this._tipoActivosService.deleteTipoActivos(id).subscribe({
           next:(res)=>{
-            this.getDepreciacion();
+            this.gettipoActivos();
             swalWithBootstrapButtons.fire(
               'Eliminado!',
               'Este registro fue eliminado correctamente!',
@@ -74,15 +69,16 @@ export class ViewCalculoDepreciacionComponent implements OnInit {
         )
       }
     })
+    
 
   }
-  
-  getDepreciacion() {
-    this._depreciacionService.getCalculoDepreciacion().subscribe({
+
+  gettipoActivos() {
+    this._tipoActivosService.getTipoActivos().subscribe({
       next:(res)=>{
         if (res.dataList
         ) {
-          this.depreciacions = res.dataList
+          this.tipoActivos = res.dataList
         }
       },
       error:(err)=>{
@@ -91,23 +87,21 @@ export class ViewCalculoDepreciacionComponent implements OnInit {
   })
   }
 
-  CreateMode(){
+  CreateMode(){ 
     this.addmodal.inView=false;
     this.addmodal.inEdit=false;
     this.addmodal.form.enable();
     this.addmodal.Clear();
   }
 
-  getDepreciacionByid(id:number,mode:number) {
-    this._depreciacionService.getCalculoDepreciacion().subscribe({
+  gettipoActivoById(id:number,mode:number) {
+    this._tipoActivosService.getTipoActivos().subscribe({
       next:(res)=>{
         if (res.dataList
         ) {
-            this.depreciacion = res.dataList.find((x:any)=> x.calculoDepreciacionId == id)
-            this.addmodal.form.patchValue({
-              ...this.depreciacion, fechaRegistro: formatDate(this.depreciacion.fechaProceso,'yyyy-MM-dd','en')
-            });
-          if(mode == 2){
+            this.tipoActivo = res.dataList.find((x:any)=> x.tipoActivoId == id)
+            this.addmodal.form.patchValue(this.tipoActivo);           
+          if(mode == 2){      
             this.addmodal.form.disable();
             this.addmodal.inView=true;
             this.addmodal.inEdit=false;
@@ -125,5 +119,4 @@ export class ViewCalculoDepreciacionComponent implements OnInit {
       }
   })
   }
-
 }

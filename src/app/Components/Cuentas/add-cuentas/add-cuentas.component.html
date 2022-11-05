@@ -3,10 +3,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex flex-column ">
+        <div class="modal-header" hidden>
+          <button type="button" #closebutton class="close" data-dismiss="modal">&times;</button>
+        </div>
         <div class="container d-flex justify-content-center">
           <div class="form">
             <form [formGroup]="form" class="row" (ngSubmit)="onSubmit()">
-              <div class="title col-12">Activo fijo</div>
+              <div class="title col-12">Cuentas</div>
               <div class="input-container ic1 col-6">
                 <input id="descripcion" formControlName="descripcion" name="descripcion" class="input" type="text" />
                 <div class="cut text-center">Descripcion</div>

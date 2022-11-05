@@ -15,7 +15,7 @@ import { formatDate } from '@angular/common';
 export class ViewCuentasComponent implements OnInit {
 
   public url: any;
-  public ceuntas: Array<Cuenta>;
+  public cuentas: Array<Cuenta>;
   public cuenta: Cuenta;
   @ViewChild(AddCuentasComponent) addmodal: AddCuentasComponent;
 
@@ -85,7 +85,7 @@ export class ViewCuentasComponent implements OnInit {
       next:(res)=>{
         if (res.dataList
         ) {
-          this.ceuntas = res.dataList
+          this.cuentas = res.dataList
         }
       },
       error:(err)=>{
@@ -106,7 +106,7 @@ export class ViewCuentasComponent implements OnInit {
       next:(res)=>{
         if (res.dataList
         ) {
-            this.cuenta = res.dataList.find((x:any)=> x.activoFijoId == id)
+            this.cuenta = res.dataList.find((x:any)=> x.cuentaId == id)
             this.addmodal.form.patchValue({
               ...this.cuenta,
             });

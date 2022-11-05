@@ -7,13 +7,15 @@ import { ViewEmpleadosComponent } from './Components/Empleados/view-empleados/vi
 import { ViewCalculoDepreciacionComponent } from './Components/CalculoDepreciacion/view-calculo-depreciacion/view-calculo-depreciacion.component';
 import { ViewCuentasComponent } from './Components/Cuentas/view-cuentas/view-cuentas.component';
 import { ViewDepartamentosComponent } from './Components/Departamentos/view-departamentos/view-departamentos.component';
+import { ViewTipoActivosComponent } from './Components/TipoActivos/view-tipo-activos/view-tipo-activos.component';
 
 const routes: Routes = [
   {path: 'activos', component: ActivosComponent},
   {path: 'empleados', component: ViewEmpleadosComponent},
   {path: 'depreciacion', component: ViewCalculoDepreciacionComponent},
   {path: 'cuentas', component: ViewCuentasComponent},
-  {path: 'Departamentos', component: ViewDepartamentosComponent}
+  {path: 'Departamentos', component: ViewDepartamentosComponent},
+  {path: 'TipoActivos', component: ViewTipoActivosComponent}
 
 ];
 

@@ -1,11 +1,13 @@
-<div class="table-responsive">
+<div class="">
   <table class="table">
-    <thead>
-      <th *ngFor="let item of headers">{{item}}</th>
+    <thead class="">
+      <tr>
+        <th scope="col" *ngFor="let item of headers">{{item}}</th>
+      </tr>
     </thead>
     <tbody class="">
       <tr class="table-active" *ngFor="let item of body">
-        <td *ngFor="let item2 of names">
+        <td scope="row" *ngFor="let item2 of names">
           {{item[item2]}}
         </td>     
         <td>

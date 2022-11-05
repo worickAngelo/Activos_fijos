@@ -36,6 +36,6 @@ export class TipoActivoService {
   deleteTipoActivos(TipoActivoId: number): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.delete(this.url + '/TipoActivos/'+TipoActivoId, {headers: headers});
+    return this._http.delete(this.url + '/TipoActivos?tipoActivoId='+TipoActivoId, {headers: headers});
   }
 }
