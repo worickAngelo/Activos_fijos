@@ -37,6 +37,6 @@ export class TipoPersonasService {
   deleteTipoPersonas(TipoPersonaId: number): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.delete(this.url + '/TipoPersonas/'+TipoPersonaId,  {headers: headers});
+    return this._http.delete(this.url + '/TipoPersonas?TipoPersonaId='+TipoPersonaId,  {headers: headers});
   }
 }

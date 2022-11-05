@@ -1,1 +1,13 @@
-<p>view-tipos-personas works!</p>
+<!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddtipoPersonas']" >Crear nuevo</a> -->
+<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal"
+  [attr.data-target]="'#modalForm'">Crear nuevo</button>
+
+<app-tabla [body]="tipoPersonas" [headers]="[
+'#',
+'descripcion',
+'Estado',
+'Acciones'
+]" (OnDelete)="delete($event)" (OnView)="gettipoPersonaById($event,2)" (OnEdit)="gettipoPersonaById($event,3)"></app-tabla>
+
+<!-- Modal -->
+<app-add-tipos-personas (onSave)="gettipoPersonas()"></app-add-tipos-personas>
