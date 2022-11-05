@@ -15,6 +15,8 @@ import { ViewCalculoDepreciacionComponent } from './Components/CalculoDepreciaci
 import { AddCalculoDepreciacionComponent } from './Components/CalculoDepreciacion/add-calculo-depreciacion/add-calculo-depreciacion.component';
 import { ViewCuentasComponent } from './Components/Cuentas/view-cuentas/view-cuentas.component';
 import { AddCuentasComponent } from './Components/Cuentas/add-cuentas/add-cuentas.component';
+import { ViewDepartamentosComponent } from './Components/Departamentos/view-departamentos/view-departamentos.component';
+import { AddDepartamentosComponent } from './Components/Departamentos/add-departamentos/add-departamentos.component';
 
 
 
@@ -30,6 +32,8 @@ import { AddCuentasComponent } from './Components/Cuentas/add-cuentas/add-cuenta
     AddCalculoDepreciacionComponent,
     ViewCuentasComponent,
     AddCuentasComponent,
+    ViewDepartamentosComponent,
+    AddDepartamentosComponent,
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,7 @@ export class DepartamentoService {
   deleteDepartamentos(departamentoId: number): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.delete(this.url + '/Departamentos/'+departamentoId, {headers: headers});
+    return this._http.delete(this.url + '/Departamentos?DepartamentoId='+departamentoId, {headers: headers});
   }
 
 }

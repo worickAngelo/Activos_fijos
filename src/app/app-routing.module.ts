@@ -6,12 +6,15 @@ import { ActivosComponent } from './Components/Activos-Fijos/view-activos/view-a
 import { ViewEmpleadosComponent } from './Components/Empleados/view-empleados/view-empleados.component';
 import { ViewCalculoDepreciacionComponent } from './Components/CalculoDepreciacion/view-calculo-depreciacion/view-calculo-depreciacion.component';
 import { ViewCuentasComponent } from './Components/Cuentas/view-cuentas/view-cuentas.component';
+import { ViewDepartamentosComponent } from './Components/Departamentos/view-departamentos/view-departamentos.component';
 
 const routes: Routes = [
   {path: 'activos', component: ActivosComponent},
   {path: 'empleados', component: ViewEmpleadosComponent},
   {path: 'depreciacion', component: ViewCalculoDepreciacionComponent},
-  {path: 'cuentas', component: ViewCuentasComponent}
+  {path: 'cuentas', component: ViewCuentasComponent},
+  {path: 'Departamentos', component: ViewDepartamentosComponent}
+
 ];
 
 @NgModule({
