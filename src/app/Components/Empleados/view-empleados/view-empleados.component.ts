@@ -42,10 +42,8 @@ export class ViewEmpleadosComponent implements OnInit {
   getEmpleados() {
     this._empleadoService.getEmpleados().subscribe({
       next: (res) => {
-        if (res.dataList
-        ) {
-          this.empleados = res.dataList
-          console.log(res.dataList)
+        if (res.dataList) {
+          this.empleados = res.dataList       
         }
       },
       error: (err) => {

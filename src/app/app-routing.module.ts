@@ -8,6 +8,7 @@ import { ViewCalculoDepreciacionComponent } from './Components/CalculoDepreciaci
 import { ViewCuentasComponent } from './Components/Cuentas/view-cuentas/view-cuentas.component';
 import { ViewDepartamentosComponent } from './Components/Departamentos/view-departamentos/view-departamentos.component';
 import { ViewTipoActivosComponent } from './Components/TipoActivos/view-tipo-activos/view-tipo-activos.component';
+import { ViewTiposPersonasComponent } from './Components/TipoPersonas/view-tipos-personas/view-tipos-personas.component';
 
 const routes: Routes = [
   {path: 'activos', component: ActivosComponent},
@@ -15,7 +16,9 @@ const routes: Routes = [
   {path: 'depreciacion', component: ViewCalculoDepreciacionComponent},
   {path: 'cuentas', component: ViewCuentasComponent},
   {path: 'Departamentos', component: ViewDepartamentosComponent},
-  {path: 'TipoActivos', component: ViewTipoActivosComponent}
+  {path: 'TipoActivos', component: ViewTipoActivosComponent},
+  {path: 'TipoPersonas', component: ViewTiposPersonasComponent}
+
 
 ];
 

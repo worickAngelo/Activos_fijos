@@ -19,6 +19,8 @@ import { ViewDepartamentosComponent } from './Components/Departamentos/view-depa
 import { AddDepartamentosComponent } from './Components/Departamentos/add-departamentos/add-departamentos.component';
 import { ViewTipoActivosComponent } from './Components/TipoActivos/view-tipo-activos/view-tipo-activos.component';
 import { AddTipoActivosComponent } from './Components/TipoActivos/add-tipo-activos/add-tipo-activos.component';
+import { ViewTiposPersonasComponent } from './Components/TipoPersonas/view-tipos-personas/view-tipos-personas.component';
+import { AddTiposPersonasComponent } from './Components/TipoPersonas/add-tipos-personas/add-tipos-personas.component';
 
 
 
@@ -38,6 +40,8 @@ import { AddTipoActivosComponent } from './Components/TipoActivos/add-tipo-activ
     AddDepartamentosComponent,
     ViewTipoActivosComponent,
     AddTipoActivosComponent,
+    ViewTiposPersonasComponent,
+    AddTiposPersonasComponent,
   ],
   imports: [
     BrowserModule,
