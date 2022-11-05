@@ -106,9 +106,9 @@ export class ViewEmpleadosComponent implements OnInit {
       next:(res)=>{
         if (res.dataList
         ) {
-            this.empleados = res.dataList.find((x:any)=> x.empleadoId == id)
+            this.empleado = res.dataList.find((x:any)=> x.empleadoId == id)
             this.addmodal.form.patchValue({
-              ...this.empleados, fechaRegistro: formatDate(this.empleado.fechaIngreso,'yyyy-MM-dd','en')
+              ...this.empleado, fechaIngreso: formatDate(this.empleado.fechaIngreso,'yyyy-MM-dd','en')   
             });
           if(mode == 2){
             this.addmodal.form.disable();

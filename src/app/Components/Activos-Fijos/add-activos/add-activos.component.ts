@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ɵɵNgOnChangesFeature } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ɵɵNgOnChangesFeature } from '@angular/core';
 import { Departamento } from '../../../model/Departamentos';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepartamentoService } from '../../../Services/departamento.service';
@@ -21,6 +21,7 @@ export class AddActivosComponent implements OnInit {
   public tipo: Array<TipoActivo>
   public departamento: Array<Departamento>;
   public date = new Date();
+  @ViewChild('closebutton') closebutton: { nativeElement: { click: () => void; }; }
 
   public form: FormGroup = new FormGroup({
     activoFijoId : new FormControl(0),
@@ -89,6 +90,7 @@ export class AddActivosComponent implements OnInit {
         if (res.succeded) {
           this.onSave.emit(true);
           this.Clear();
+          this.closebutton.nativeElement.click();
         } else {
 
           res.errors.forEach((element: any) => {
@@ -112,6 +114,7 @@ export class AddActivosComponent implements OnInit {
         if (res.succeded) {
           this.onSave.emit(true);
           this.Clear();
+          this.closebutton.nativeElement.click();
         } else {
 
           res.errors.forEach((element: any) => {
