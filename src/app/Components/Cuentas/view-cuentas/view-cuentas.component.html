@@ -1,1 +1,13 @@
-<p>view-cuentas works!</p>
+<!-- <a style="margin-top: 20px;" class="btn btn-primary" aria-current="page" [routerLink]="['/AddActivos']" >Crear nuevo</a> -->
+<button (click)="CreateMode()" class="btn btn-outline-primary m-1" type="" data-toggle="modal"
+  [attr.data-target]="'#modalForm'">Crear nuevo</button>
+
+<app-tabla [body]="ceuntas" [headers]="[
+'#',
+'descripcion',
+'estado',
+'Acciones'
+]" (OnDelete)="delete($event)" (OnView)="getCuentasById($event,2)" (OnEdit)="getCuentasById($event,3)"></app-tabla>
+
+<!-- Modal -->
+<app-add-cuentas (onSave)="getCuentas()"></app-add-cuentas>

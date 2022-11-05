@@ -37,6 +37,6 @@ export class CuentasService {
   deleteCuentas(CuentaId: number): Observable<any> {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
-    return this._http.delete(this.url + '/Cuentas/'+CuentaId, {headers: headers});
+    return this._http.delete(this.url + '/Cuentas?CuentaId='+CuentaId, {headers: headers});
   }
 }
