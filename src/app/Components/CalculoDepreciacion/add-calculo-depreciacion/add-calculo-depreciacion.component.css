@@ -47,19 +47,16 @@
 
 .cut {
   background-color: #ffffff;
-  border-radius: 10px;
   height: 20px;
-  left: 20px;
+  left: 40px;
   position: absolute;
-  top: -20px;
+  top: -30px;
   transform: translateY(0);
   transition: transform 200ms;
-
-  width: 120px;
 }
 
 .cut-short {
-  width: 50px;
+  width: 60px;
 }
 
 .input:focus ~ .cut,
