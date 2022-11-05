@@ -3,6 +3,9 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex flex-column ">
+        <div class="modal-header" hidden>
+          <button type="button" #closebutton class="close" data-dismiss="modal">&times;</button>
+        </div>
         <div class="container d-flex justify-content-center">
           <div class="form">
             <form [formGroup]="form" class="row" (ngSubmit)="onSubmit()">
